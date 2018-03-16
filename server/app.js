@@ -12,7 +12,7 @@ app.use('/api/users', users);
 app.use(middlewares);
 
 
-const port = app.get('port');
+const port = process.env.PORT || app.get('port');
 
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`)
