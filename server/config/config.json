@@ -1,0 +1,8 @@
+{
+  "host" : "localhost",
+  "port": 8000,
+  "authenticationMessages": {
+    "usernameError": "User not found",
+    "passwordError": "Password error"
+  }
+}
