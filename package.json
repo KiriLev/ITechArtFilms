@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "cd server && node app",
     "deploy": "git push heroku master",
     "deploy-dev": "git push heroku develop",
     "test": "echo \"Error: no test specified\" && exit 1"
