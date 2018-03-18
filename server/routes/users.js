@@ -8,4 +8,9 @@ router.get('/add', function (req, res) {
   //controller.addUser(res.data);
 });
 
+router.get('/', function (req, res) {
+  res.send('uuuuuu');
+  //controller.addUser(res.data);
+});
+
 module.exports = router;
