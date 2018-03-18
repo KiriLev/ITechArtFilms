@@ -1,16 +1,10 @@
 const express = require('express');
-
+const controller = require('../controllers/users');
 const router = express.Router();
 
-/* GET users listing. */
-router.get('/add', function (req, res) {
-  res.send('eeeee');
-  //controller.addUser(res.data);
-});
 
-router.get('/', function (req, res) {
-  res.send('uuuuuu');
-  //controller.addUser(res.data);
-});
+router.post('/add', controller.addUser);
+
+router.get('/', controller.getUsers);
 
 module.exports = router;
