@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from 'material-ui/Button';
+import { Form, Field, change, reduxForm } from 'redux-form'
 
 import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
-
+import TextField from './TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const styles = {
@@ -16,16 +16,31 @@ const styles = {
 
 const Users = (props) => {
     const { classes } = props;
-
+    console.log(props);
     return (
         <MuiThemeProvider  >
             <div className={classes.root}>
-                <div>
-                    <TextField value={props.newUserName} onChange={props.onFieldChange}/>
-                    <Button onClick={props.addUser} >
+                <Form onSubmit={(e) => {
+                    props.onSubmit(e);
+                    props.reset();
+                }}>
+                    <Field
+                        name="username"
+                        component={TextField}
+                        label="Username"
+                    /><br /><br />
+
+                    <Field
+                        name="password"
+                        component={TextField}
+                        label="Password"
+                        type="password"
+                    /><br />
+
+                    <Button type="submit"  >
                         Add
                     </Button>
-                </div>
+                </Form>
                 <div>
                     {props.users}
                 </div>
@@ -41,4 +56,4 @@ Users.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 }
 
-export default withStyles(styles)(Users);
+export default withStyles(styles)(reduxForm({ form: 'users'})(Users));

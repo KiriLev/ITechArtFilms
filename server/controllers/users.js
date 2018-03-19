@@ -1,25 +1,23 @@
-const User = require('../models/user');
+const { User } = require('../models');
 
-async function addUser(req, res){
-    console.log(req);
-    const newUser = new User({
-        username: 'ssss',
-        hashedPassword: 'ds232ewde',
-    });
-    try {
-        await newUser.save();
-    } catch (e) {
-
-    }
+function addUser(req, res) {
+    const user = req.body;
+    User.create({
+        username: user.username,
+        hashedPassword: user.password,
+    }).then(res.status(200).end('OK'))
+    .catch(e => res.status(500).json(e));
 }
 
-async function getUsers(req, res){
+async function getUsers(req, res) {
     try {
         const users = await User.find({});
     } catch (e) {
 
     }
 }
+
+
 
 module.exports = {
     addUser,

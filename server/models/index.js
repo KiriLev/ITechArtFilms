@@ -21,9 +21,10 @@ db.once('open', function () {
     console.log('connected.');
 });
 
-const schemas = {
+
+const models = {
     Film,
-    User: User(mongoose),
+    User,
 }
 
-module.exports = schemas;
+module.exports = models;
