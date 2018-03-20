@@ -6,17 +6,13 @@ function addUser(req, res) {
         username: user.username,
         hashedPassword: user.password,
     }).then(res.status(200).end('OK'))
-    .catch(e => res.status(500).json(e));
+        .catch(e => res.status(500).json(e));
 }
 
 async function getUsers(req, res) {
-    try {
-        const users = await User.find({});
-    } catch (e) {
-
-    }
+    User.find({})
+        .then((users) => res.status(200).send(users)).catch(res.status(500).send);
 }
-
 
 
 module.exports = {

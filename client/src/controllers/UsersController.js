@@ -14,19 +14,20 @@ class UsersContainer extends Component {
 
     constructor(props) {
         super(props);
-
+        this.state = {
+            users: []
+        }
         this.getUsers = this.getUsers.bind(this);
         this.addUser = this.addUser.bind(this);
-
+        this.getUsers();
     }
 
     getUsers() {
-        const users = axios.get('/api/users')
-            .then(() => {
-                this.setState({
-                    users
-                });
+        UserService.getUsers().then((users) => {
+            this.setState({
+                users: users.data
             });
+        }).catch(console.log);
     }
     addUser(e) {
         e.preventDefault();
@@ -34,9 +35,10 @@ class UsersContainer extends Component {
     }
 
     render() {
-        // this.getUsers();
+        this.getUsers();
         const props = {
             onSubmit: this.addUser,
+            users: this.state.users
         }
         return <Users {...props}/>;
     }
