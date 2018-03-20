@@ -4,10 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "npm run build-client",
+    "start": "npm run build-server",
     "build-client": "cd client && npm run build",
     "build-server": "cd server && npm start",
-    "deploy": "git push heroku master",
+    "deploy": "npm run build-client && git push heroku master",
     "deploy-dev": "git push heroku develop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
