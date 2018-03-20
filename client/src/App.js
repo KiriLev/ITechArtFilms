@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import axios from 'axios';
+
 import UsersController from './controllers/UsersController';
+import { Route, Switch, withRouter } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <UsersController />
+        <Switch>
+          <Route exact path={`${process.env.PUBLIC_URL}/`} />
+          <Route exact path={`${process.env.PUBLIC_URL}/users`} component={UsersController} />
+          <Route exact path="*" component={() => <div style={{ textAlign: 'center' }}><h1>404 – страница не найдена</h1></div>} />
+        </Switch>
       </div>
     );
   }
