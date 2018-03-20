@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //const hostUrl = 'http://localhost:8000/';
-const hostUrl = '/';
+const hostUrl = 'https://itechart-films.herokuapp.com/';
 
 
 function addUser(user){
@@ -10,6 +10,7 @@ function addUser(user){
 async function getUsers(){
     let users = {};
     try {
+
         users = await axios.get(`${hostUrl}api/users`)
     } catch(e){
         throw e;
