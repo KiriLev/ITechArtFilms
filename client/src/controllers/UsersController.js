@@ -32,10 +32,10 @@ class UsersContainer extends Component {
     addUser(e) {
         e.preventDefault();
         UserService.addUser(this.props.values);
+        this.getUsers();
     }
 
     render() {
-        this.getUsers();
         const props = {
             onSubmit: this.addUser,
             users: this.state.users
