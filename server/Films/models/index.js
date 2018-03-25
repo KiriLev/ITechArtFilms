@@ -8,21 +8,10 @@ const connectionString = `mongodb://server:${encodeURIComponent('yWwHkBIqAaNmnbl
 
 
 mongoose.connect(connectionString);
-const User = require('./user');
-
-const db = mongoose.connection;
-
-db.on('error', function (err) {
-    console.log('connection error', err);
-});
-
-db.once('open', function () {
-    console.log('connected.');
-});
-
+const Film = require('./Film');
 
 const models = {
-    User,
+    Film,
 }
 
 module.exports = models;

@@ -7,9 +7,13 @@ import { BrowserRouter } from 'react-router-dom'
 import reducers from './reducers';
 import { createStore } from 'redux';
 
+const initialStore = {
+    films: []
+}
 
 const store = createStore(
     reducers,
+    initialStore,
     window.devToolsExtension && window.devToolsExtension()
 );
 

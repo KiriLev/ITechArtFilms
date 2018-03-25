@@ -3,7 +3,7 @@ const config = require('../config');
 const cors = require('cors');
 
 const corsOptions = {
-  origin: `http://${config.host}:3000`,
+  origin: `http://localhost:3000`,
   optionsSuccessStatus: 200,
   credentials: true,
   methods: ['GET', 'PUT', 'POST', 'OPTIONS', 'DELETE', 'PATCH'],
