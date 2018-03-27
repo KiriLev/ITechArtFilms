@@ -6,7 +6,6 @@ const connectionString = `mongodb://server:${encodeURIComponent('yWwHkBIqAaNmnbl
     'datacluster-shard-00-02-iv9to.mongodb.net:27017/projectData?' +
     'ssl=true&replicaSet=DataCluster-shard-0&authSource=admin';
 
-
 mongoose.connect(connectionString);
 const Film = require('./Film');
 

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import Mainpage from '../components';
 import { connect } from 'react-redux';
-import FilmsService from '../services';
+import { FilmsService } from '../../services';
 import { loadFilms } from '../actions'
 import { bindActionCreators } from 'redux';
 
@@ -23,7 +23,6 @@ class MainpageContainer extends Component {
         const numOfCardsOnPage = 5;
         const offset = this.props.films.length * page;
         FilmsService.getFilms(offset, numOfCardsOnPage).then((films) => {
-            console.log(page, films.data.length)
             if (films.data.length < numOfCardsOnPage){
                 this.setState({ hasMore: false })
             }
