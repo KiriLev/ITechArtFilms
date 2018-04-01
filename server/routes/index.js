@@ -1,8 +1,8 @@
-const users = require('./users');
-const films = require('../Films');
+const auth = require('../Auth').routes;
+const films = require('../Films').routes;
 const router = require('express').Router();
 
-router.use(users);
+router.use(auth);
 router.use(films);
 
 

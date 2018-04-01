@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-import { MainpageReducers } from '../Mainpage'
-import { FilmPageReducers } from '../FilmPage'
+import { MainpageReducers } from '../Mainpage/reducers'
+import { FilmPageReducers } from '../FilmPage/reducers'
 
 
 
