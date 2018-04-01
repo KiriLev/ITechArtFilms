@@ -4,25 +4,21 @@ import React, { Component } from 'react';
 
 import Mainpage from '../components';
 import { connect } from 'react-redux';
-import { GlobalServices } from '../../services';
+import { GlobalService } from '../../services';
 import { loadFilms } from '../actions'
 import { bindActionCreators } from 'redux';
 
 
-class MainpageContainer extends Component {
+class LoginPageContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            hasMore: true
-        };
-        this.getFilms = this.getFilms.bind(this);
+        
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    getFilms(page){
-        const numOfCardsOnPage = 5;
-        const offset = this.props.films.length * page;
-        GlobalServices.getFilms(offset, numOfCardsOnPage).then((films) => {
+    onSubmit(page){
+        LoginService.getFilms(offset, numOfCardsOnPage).then((films) => {
             if (films.data.length < numOfCardsOnPage){
                 this.setState({ hasMore: false })
             }
@@ -55,4 +51,4 @@ const mapDispatchToProps = function (dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainpageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPageContainer);

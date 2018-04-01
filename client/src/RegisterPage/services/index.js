@@ -5,12 +5,12 @@ const hostUrl = 'https://itechart-films.herokuapp.com/';
 
 
 function addUser(user){
-    return axios.patch(`${hostUrl}api/users/add`, user);
+    return axios.post(`${hostUrl}api/users/add`, user);
 }
+
 async function getUsers(){
     let users = {};
     try {
-
         users = await axios.get(`${hostUrl}api/users`)
     } catch(e){
         throw e;

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import FilmPage from '../components';
 import { connect } from 'react-redux';
-import { FilmsService } from '../../services';
+import { GlobalServices } from '../../services';
 import { loadFilm } from '../actions'
 import { bindActionCreators } from 'redux';
 
@@ -23,7 +23,7 @@ class FilmPageContainer extends Component {
 
     getFilm(){
         const id = this.props.match.params.id;
-        FilmsService.getFilm(id).then((film) => {
+        GlobalServices.getFilm(id).then((film) => {
             this.setState({ isLoading: false })
             this.props.loadFilmAction(film.data);
         }).catch(console.log);
@@ -34,7 +34,6 @@ class FilmPageContainer extends Component {
             film: this.props.film,
             isLoading: this.state.isLoading
         }
-        console.log(props);
         return <FilmPage {...props}/>;
     }
 }

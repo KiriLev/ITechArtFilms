@@ -1,10 +1,9 @@
 
+import {getFilm, getFilms} from './films';
 
-import { getFilms, getFilm } from './films';
-
-export const FilmsService = {
-    getFilms,
-    getFilm
+export const GlobalServices = {
+    getFilm, 
+    getFilms
 }
 
 
