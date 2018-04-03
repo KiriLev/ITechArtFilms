@@ -16,9 +16,14 @@ var store = new MongoDBStore(
 
 router.use(session({
     secret: 'This is a secret',
+
     cookie: {
+        secure: false,
+        httpOnly: false,
         maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
     },
+    proxy: true,
+
     store,
     resave: true,
     saveUninitialized: true,

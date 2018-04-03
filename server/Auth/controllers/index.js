@@ -19,16 +19,16 @@ async function login(req, res) {
     }
     const userFromDb = await User.findOne({ "username": userData.username });
     if (!userFromDb) {
-        res.status(500).send({ "error": "Wrong username" });
+        res.status(401).send({ "error": "Wrong username" });
         return;
     }
     if (await bcrypt.compare(userData.password, userFromDb.hashedPassword)) {
         req.session.userId = userFromDb._id;
-        res.status(200).send(userFromDb);
+        req.session.save();
+        res.status(200).send(userFromDb._id);
         return;
     }
-
-    res.status(500).send({ "error": "Wrong password" });
+    res.status(401).send({ "error": "Wrong password" });
 
 }
 

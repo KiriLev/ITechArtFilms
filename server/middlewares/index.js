@@ -5,8 +5,9 @@ const auth = require('../Auth/middlewares');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
-router.use(cors);
 router.use(auth);
+
+router.use(cors);
 
 
 module.exports = router;
