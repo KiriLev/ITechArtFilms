@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import RegisterService from '../services';
 import { registerUser } from '../actions'
 import { bindActionCreators } from 'redux';
-import { getFormValues, formValueSelector } from 'redux-form';
+import { getFormValues } from 'redux-form';
 
 
 class RegisterPageContainer extends Component {

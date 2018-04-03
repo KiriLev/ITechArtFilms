@@ -5,6 +5,7 @@ import Button from 'material-ui/Button';
 import { Form, Field, change, reduxForm } from 'redux-form'
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import { Link } from "react-router-dom";
 
 import { withStyles } from 'material-ui/styles';
 import TextField from './TextField';
@@ -22,7 +23,7 @@ const LoginPage = (props) => {
     return (
         <div className={classes.root}>
             <Form onSubmit={(e) => {
-                props.onSubmit(e);
+                props.handleSubmit(e);
                 props.reset();
             }}>
                 <Field
@@ -41,14 +42,22 @@ const LoginPage = (props) => {
                 <Button type="submit"  >
                     Login
                 </Button>
+
+
+                <Link to={`register`} style={{ textDecoration: 'none' }}>
+                    <Button>
+                        To Register
+                    </Button>
+                </Link>
+
             </Form>
         </div>
     );
 }
 
-Users.propTypes = {
-    users: PropTypes.array.isRequired,
+LoginPage.propTypes = {
+
     onSubmit: PropTypes.func.isRequired,
 }
 
-export default withStyles(styles)(reduxForm({ form: 'users' })(Users));
+export default withStyles(styles)(reduxForm({ form: 'login' })(LoginPage));

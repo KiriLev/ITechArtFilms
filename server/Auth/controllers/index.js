@@ -37,13 +37,16 @@ function logout(req, res) {
     res.status(200).end();
 }
 
-function getUser(req, res) {
-    res.status(200).send(req.session.user);
+async function getSessionUser(req, res) {
+    const id = req.session.userId;
+    User.find({_id: id})
+        .then((user) => res.status(200).send(user)).catch(res.status(404).send);
 }
+
 
 module.exports = {
     login,
     logout,
-    getUser,
+    getSessionUser,
     createUser,
 };

@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom'
 import reducers from './reducers';
 import { createStore } from 'redux';
+import { CookiesProvider } from 'react-cookie';
 
 const initialStore = {
-    films: [],
-    
+
 }
 
 const store = createStore(
@@ -20,10 +20,12 @@ const store = createStore(
 
 
 ReactDOM.render((
+
     <BrowserRouter>
-        <Provider store={store} >
-            <App />
-        </Provider>
+            <Provider store={store} >
+                <App />
+            </Provider>
+
 
     </BrowserRouter>
 ), document.getElementById('root'));

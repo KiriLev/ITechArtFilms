@@ -1,17 +1,20 @@
 import axios from 'axios'
 
-//const hostUrl = 'http://localhost:8000/';
-const hostUrl = 'https://itechart-films.herokuapp.com/';
+const hostUrl = 'http://localhost:8000/';
+//const hostUrl = 'https://itechart-films.herokuapp.com/';
 
+const api = axios.create({
+    withCredentials: true
+});
 
-function addUser(user){
-    return axios.patch(`${hostUrl}api/users/add`, user);
+function login(user){
+    return api.post(`${hostUrl}api/users/login`, user);
 }
 
 async function getUsers(){
     let users = {};
     try {
-        users = await axios.get(`${hostUrl}api/users`)
+        users = await api.get(`${hostUrl}api/users`)
     } catch(e){
         throw e;
     }
@@ -20,8 +23,7 @@ async function getUsers(){
 
 
 export default {
-    addUser,
-    getUsers
+    login
 }
 
 

@@ -7,6 +7,7 @@ import RegisterPageReducers from '../RegisterPage/reducers'
 
 
 export default combineReducers({
+   // user: userReducer,
     form: formReducer,
     mainPage: MainpageReducers,
     filmPage: FilmPageReducers,

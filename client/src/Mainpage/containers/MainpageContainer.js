@@ -32,7 +32,6 @@ class MainpageContainer extends Component {
     }
 
     render() {
-        
         const props = {
             films: this.props.films,
             getFilms: this.getFilms,

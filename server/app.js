@@ -25,6 +25,8 @@ app.use(middlewares);
 
 app.use(routes);
 
+
+
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.get('*', (req, res) => {
