@@ -2,7 +2,24 @@ const { User } = require('../models');
 const bcrypt = require('bcrypt');
 
 async function createUser(req, res) {
+
+    if (!req.body.username) {
+        const err = {
+            username: "Can't be empty",
+        }
+        res.status(400).send(err);
+        return;
+    }
+
+    if (!req.body.password) {
+        const err = {
+            password: "Can't be empty",
+        }
+        res.status(400).send(err);
+        return;
+    }
     bcrypt.hash(req.body.password, 10, async function (err, hash) {
+        
         const user = {
             username: req.body.username,
             hashedPassword: hash,
@@ -23,6 +40,22 @@ async function createUser(req, res) {
 }
 
 async function login(req, res) {
+    if (!req.body.username) {
+        const err = {
+            username: "Can't be empty",
+        }
+        res.status(400).send(err);
+        return;
+    }
+
+    if (!req.body.password) {
+        const err = {
+            password: "Can't be empty",
+        }
+        res.status(400).send(err);
+        return;
+    }
+    
     const userData = {
         username: req.body.username,
         password: req.body.password,
@@ -46,7 +79,6 @@ function logout(req, res) {
     req.session.destroy();
     res.status(200).end();
 }
-
 
 
 

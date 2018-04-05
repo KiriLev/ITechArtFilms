@@ -15,11 +15,14 @@ import styles from './styles';
 const FilmCard = ({ classes, title, description, picLinks, rating, _id }) => {
     return (
         <Card className={classes.card}>
-            <CardMedia
-                className={classes.media}
-                image={picLinks[0]}
-                title={title}
-            />
+            <Link to={`films/${_id}`} >
+                <CardMedia
+                    className={classes.media}
+                    image={picLinks[0]}
+                    title={title}
+                />
+            </Link>
+
             <CardContent>
                 <Typography gutterBottom variant="headline" component="h2">
                     {title}
