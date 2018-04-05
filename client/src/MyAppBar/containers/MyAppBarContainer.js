@@ -8,26 +8,27 @@ class MyAppBarContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            user: {},
-        }
-        this.getUser = this.getUser.bind(this);
         this.logout = this.logout.bind(this);
-        this.getUser();
+        this.state={
+            key:0,
+        }
     }
 
-    async getUser() {
-        const user = await GlobalServices.getSessionUser();
-        this.setState({ user: user.data[0] });
-    }
+
     logout(){
+        localStorage.removeItem('user');
         GlobalServices.logout();
-        this.setState({user: {}});
+        this.render();
+        this.setState({ key: Math.random() });
+
     }
+
     render() {
+        const user = JSON.parse(localStorage.getItem('user'));
         const props = {
-            user: this.state.user,
+            user,
             onLogout: this.logout,
+            key: this.state.key //hack for rerendering on logout
         }
         return <MyAppBar {...props} />;
     }

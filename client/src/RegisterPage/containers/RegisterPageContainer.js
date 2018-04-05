@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import RegisterService from '../services';
 import { registerUser } from '../actions'
 import { bindActionCreators } from 'redux';
-import { getFormValues } from 'redux-form';
+import { getFormValues, SubmissionError } from 'redux-form';
 
 
 class RegisterPageContainer extends Component {
@@ -17,16 +17,22 @@ class RegisterPageContainer extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    async onSubmit(e) {
-        e.preventDefault();
-        this.props.registerUserAction(this.props.userToRegister);
-        const data = await RegisterService.addUser(this.props.userToRegister);
-        this.props.history.push(`${process.env.PUBLIC_URL}/login`);
+    async onSubmit() {
+        try {
+            const data = await RegisterService.addUser(this.props.userToRegister);
+            this.props.history.push(`${process.env.PUBLIC_URL}/login`);
+        } catch (e){
+            throw new SubmissionError({
+                username: e.response.data.username,
+                password: e.response.data.password,
+                _error: 'Registration failed!'
+              })
+        }
     }
 
     render() {
         const props = {
-            handleSubmit: this.onSubmit,
+            onSubmit: this.onSubmit,
         }
         return <RegisterPage {...props} />;
     }
@@ -38,11 +44,6 @@ const mapStateToProps = function (state) {
     }
 }
 
-const mapDispatchToProps = function (dispatch) {
-    return bindActionCreators({
-        registerUserAction: registerUser
-    }, dispatch)
-}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterPageContainer);
+export default connect(mapStateToProps)(RegisterPageContainer);

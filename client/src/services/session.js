@@ -9,10 +9,6 @@ const api = axios.create({
     withCredentials: true
 });
 
-export function getSessionUser() {
-    return api.get(hostUrl + `api/users/session`);
-}
-
 export function logout() {
     return api.post(hostUrl + `api/users/logout`, {});
 }

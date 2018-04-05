@@ -11,17 +11,6 @@ function login(user){
     return api.post(`${hostUrl}api/users/login`, user);
 }
 
-async function getUsers(){
-    let users = {};
-    try {
-        users = await api.get(`${hostUrl}api/users`)
-    } catch(e){
-        throw e;
-    }
-    return users;
-}
-
-
 export default {
     login
 }

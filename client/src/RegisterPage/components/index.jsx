@@ -6,7 +6,6 @@ import { Form, Field, change, reduxForm } from 'redux-form'
 
 import { withStyles } from 'material-ui/styles';
 import TextField from './TextField';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const styles = {
     root: {
@@ -16,10 +15,10 @@ const styles = {
 };
 
 const RegisterPage = (props) => {
-    const { classes, handleSubmit } = props;
+    const { classes, handleSubmit, onSubmit } = props;
     return (
         <div className={classes.root}>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit(onSubmit)}>
                 <Field
                     name="username"
                     component={TextField}

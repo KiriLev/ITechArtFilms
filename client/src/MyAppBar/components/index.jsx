@@ -16,21 +16,21 @@ const styles = {
     root: {
         flexGrow: 1,
     },
+
     flex: {
         flex: 1,
     },
-
+    appbar:{
+        backgroundColor:"rgb(209, 224, 224)"
+    }
 };
-
 
 function MyAppBar(props) {
     const { classes, user, onLogout } = props;
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar className={classes.appbar} position="static">
                 <Toolbar>
-
-
                     <Typography variant="title" color="inherit" className={classes.flex}>
                         <Link to={``} style={{ textDecoration: 'none' }}>TopFilms</Link>
                     </Typography>
@@ -40,7 +40,7 @@ function MyAppBar(props) {
                             <Button color="inherit" onClick={onLogout}>Logout</Button>
                         </div>
                         :
-                        <Link to={`login`} style={{ textDecoration: 'none' }}>
+                        <Link to={`${process.env.PUBLIC_URL}/login`} style={{ textDecoration: 'none' }}>
                             <Button color="inherit">Login</Button>
                         </Link>
                     }

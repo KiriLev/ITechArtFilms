@@ -19,17 +19,15 @@ const styles = {
 };
 
 const LoginPage = (props) => {
-    const { classes } = props;
+    const { classes, handleSubmit, onSubmit } = props;
     return (
         <div className={classes.root}>
-            <Form onSubmit={(e) => {
-                props.handleSubmit(e);
-                props.reset();
-            }}>
+            <Form onSubmit={handleSubmit(onSubmit)}>
                 <Field
                     name="username"
                     component={TextField}
                     label="Username"
+                    
                 /><br /><br />
 
                 <Field
@@ -37,6 +35,7 @@ const LoginPage = (props) => {
                     component={TextField}
                     label="Password"
                     type="password"
+
                 /><br />
 
                 <Button type="submit"  >
@@ -46,7 +45,7 @@ const LoginPage = (props) => {
 
                 <Link to={`register`} style={{ textDecoration: 'none' }}>
                     <Button>
-                        To Register
+                        Sign in
                     </Button>
                 </Link>
 
