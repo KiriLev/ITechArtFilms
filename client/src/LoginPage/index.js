@@ -1,1 +1,7 @@
-export default require('./containers/LoginPageContainer');
+import LoginPageContainer from './containers/LoginPageContainer';
+
+export default LoginPageContainer;
+
+
+
+

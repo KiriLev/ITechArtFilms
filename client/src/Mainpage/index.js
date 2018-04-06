@@ -1,2 +1,4 @@
-export default require('./containers/MainpageContainer');
+import MainpageContainer from './containers/MainpageContainer';
+
+export default MainpageContainer;
 

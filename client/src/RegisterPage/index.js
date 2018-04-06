@@ -1,2 +1,5 @@
-export default require('./containers/RegisterPageContainer');
+import RegisterPageContainer from './containers/RegisterPageContainer'
+
+export default RegisterPageContainer;
+
 
